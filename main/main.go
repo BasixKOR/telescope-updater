@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/BasixKOR/telescope-updater/utils"
-	"github.com/algolia/algoliasearch-client-go/v3/algolia/opt"
 	"github.com/algolia/algoliasearch-client-go/v3/algolia/search"
 	"github.com/joho/godotenv"
 	"github.com/shurcooL/githubv4"
@@ -30,7 +29,7 @@ func main() {
 	c := make(chan utils.FetchedRepos)
 	go utils.Fetch(github, c)
 	for repos := range c {
-		_, err := index.SaveObjects(repos, opt.AutoGenerateObjectIDIfNotExist(true))
+		_, err := index.SaveObjects(repos)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "Error saving objects: ", err)
 			os.Exit(1)
