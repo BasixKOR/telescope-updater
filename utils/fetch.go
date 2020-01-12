@@ -22,8 +22,12 @@ type PageInfo struct {
 }
 
 type FetchedRepos []struct {
-	NameWithOwner   string `json:"nameWithOwner"`
-	Description     string `json:"description"`
+	ID            githubv4.ID `json:"objectID,string"`
+	NameWithOwner string      `json:"nameWithOwner"`
+	Description   string      `json:"description"`
+	Stargazers    struct {
+		TotalCount int `json:"totalCount"`
+	} `json:"stargazers"`
 	PrimaryLanguage struct {
 		Name string `json:"name"`
 	} `json:"primaryLanguage"`
