@@ -18,3 +18,7 @@ jobs:
 
       - name: Build
         run: go run -v ./main
+        env: # Or as an environment variable
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          ALGOLIA_APP: ${{ secrets.ALGOLIA_APP }}
+          ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
