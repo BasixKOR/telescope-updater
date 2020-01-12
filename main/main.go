@@ -17,9 +17,9 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Println("Initializing Agolia...")
-	agolia := search.NewClient(GetKey("AGOLIA_APP"), GetKey("AGOLIA_KEY"))
-	index := agolia.InitIndex("repos")
+	fmt.Println("Initializing Algolia...")
+	algolia := search.NewClient(GetKey("ALGOLIA_APP"), GetKey("ALGOLIA_KEY"))
+	index := algolia.InitIndex("repos")
 
 	fmt.Println("Initializing GitHub API...")
 	key := GetKey("GITHUB_TOKEN")
