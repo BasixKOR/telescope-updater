@@ -14,8 +14,7 @@ import (
 func main() {
 	err := godotenv.Load()
 	if err != nil {
-		fmt.Fprintln(os.Stderr, "Error loading .env file")
-		os.Exit(1)
+		_, _ = fmt.Fprintln(os.Stderr, "Error loading .env file, make sure you have set the envvars")
 	}
 
 	fmt.Println("Initializing Algolia...")
