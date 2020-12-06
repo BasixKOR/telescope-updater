@@ -32,7 +32,7 @@ func main() {
 	github := githubv4.NewClient(utils.NewBearerClient(key))
 
 	fmt.Println("Initialized! Attempting to fetch...")
-	c := make(chan utils.FetchedRepos)
+	c := make(chan []utils.FetchedRepo)
 	go utils.Fetch(github, c)
 	for repos := range c {
 		_, err := index.SaveObjects(repos)
