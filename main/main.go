@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/BasixKOR/telescope-updater/utils"
-	"github.com/algolia/algoliasearch-client-go/v3/algolia/compression"
 	"github.com/algolia/algoliasearch-client-go/v3/algolia/search"
 	"github.com/joho/godotenv"
 	"github.com/shurcooL/githubv4"
@@ -23,7 +22,6 @@ func main() {
 		AppID:        GetKey("ALGOLIA_APP"),
 		APIKey:       GetKey("ALGOLIA_KEY"),
 		MaxBatchSize: 999999,
-		Compression:  compression.GZIP,
 	}
 
 	algolia := search.NewClientWithConfig(config)
