@@ -1,7 +1,10 @@
 name: Go
 on:
+  push:
+    branches:
+    - master
   schedule:
-    - cron:  '3 3 18 * *'
+    - cron:  '0 0 1 * *'
 jobs:
   update:
     name: Update Index
