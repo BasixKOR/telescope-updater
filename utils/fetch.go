@@ -52,6 +52,13 @@ type FetchedRepo struct {
 	Topics []string `json:"topics"`
 }
 
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
 func convert(queried StarredReposQuery) []FetchedRepo {
 	original := queried.User.StarredRepositories.Nodes
 	fetched := []FetchedRepo{}
@@ -65,7 +72,7 @@ func convert(queried StarredReposQuery) []FetchedRepo {
 		fetched = append(fetched, FetchedRepo{
 			ID:            i.ID,
 			NameWithOwner: i.NameWithOwner,
-			Description:   i.Description[:200],
+			Description:   string([]rune(i.Description[:max(len(i.Description), 200)])),
 			Stargazers: struct {
 				TotalCount int `json:"totalCount"`
 			}{
