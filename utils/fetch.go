@@ -3,8 +3,9 @@ package utils
 import (
 	"context"
 	"fmt"
-	"github.com/shurcooL/githubv4"
 	"os"
+
+	"github.com/shurcooL/githubv4"
 )
 
 type StarredReposQuery struct {
@@ -64,7 +65,7 @@ func convert(queried StarredReposQuery) []FetchedRepo {
 		fetched = append(fetched, FetchedRepo{
 			ID:            i.ID,
 			NameWithOwner: i.NameWithOwner,
-			Description:   i.Description,
+			Description:   i.Description[:200],
 			Stargazers: struct {
 				TotalCount int `json:"totalCount"`
 			}{
@@ -77,6 +78,7 @@ func convert(queried StarredReposQuery) []FetchedRepo {
 			},
 			Topics: topics,
 		})
+
 	}
 	return fetched
 }
